@@ -1,0 +1,8 @@
+## File managed with puppet ###
+
+[Service]
+<% conf = scope.lookupvar('profile_inuits::jitsi::jicofo_configuration') -%>
+<% conf.map do |key,value| -%>
+Environment=<%= key -%>=<%= value %>
+<% end %>
+
