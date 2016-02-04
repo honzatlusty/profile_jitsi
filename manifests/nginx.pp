@@ -10,7 +10,13 @@ $proxy_headers = [
   class {::nginx: }
 
 #  include inuits::ssl::inuits
-  #->
+
+
+#  temp. fix https://github.com/jfryman/puppet-nginx/issues/610
+  file {'/etc/nginx/sites-avalable':
+    ensure => 'directory'
+  } ->
+
   nginx::resource::vhost { $jitsi_vhost_server_name:
     listen_port         => 80,
     index_files         => [ 'index.html' ],
@@ -20,6 +26,7 @@ $proxy_headers = [
     location_custom_cfg => {
       ssi => 'on',
     },
+    require => Package['nginx'],
   }
 
   nginx::resource::location { '~ ^/([a-zA-Z0-9=\?]+)$':
