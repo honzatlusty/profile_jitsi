@@ -61,7 +61,7 @@ class profile_jitsi::prosody (
     ensure  => present,
     content => template('profile_jitsi/user.dat.erb'),
     notify  => Service['prosody'],
-    require => Package['prosody'],
+    require => [Package['prosody'],Exec['prosodyctl register user auth.domain user_password']]
   }
 
 }
