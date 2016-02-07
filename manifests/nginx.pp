@@ -1,3 +1,4 @@
+#class profile_jitsi::nginx
 class profile_jitsi::nginx (
   $jitsi_vhost_server_name
   
@@ -7,9 +8,8 @@ $proxy_headers = [
     'X-Forwarded-For $remote_addr',
     'Host $http_host',
   ]
-  class {::nginx: }
+  class {'::nginx:' }
 
-#  include inuits::ssl::inuits
 
 
 #  temp. fix https://github.com/jfryman/puppet-nginx/issues/610
@@ -26,7 +26,7 @@ $proxy_headers = [
     location_custom_cfg => {
       ssi => 'on',
     },
-    require => Package['nginx'],
+    require             => Package['nginx'],
   }
 
   nginx::resource::location { '~ ^/([a-zA-Z0-9=\?]+)$':

@@ -1,3 +1,4 @@
+#class profile_jitsi::prosody
 class profile_jitsi::prosody (
   $jicofo_password,
   $jitsi_vhost_server_name,
