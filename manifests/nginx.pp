@@ -8,7 +8,7 @@ $proxy_headers = [
     'X-Forwarded-For $remote_addr',
     'Host $http_host',
   ]
-  class {'::nginx:' }
+  class {'::nginx': }
 
 
 
