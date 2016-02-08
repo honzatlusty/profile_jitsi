@@ -19,7 +19,7 @@ class profile_jitsi (
   $prosody_interface,
 #  $hypervisor_public_interface,
 ) {
-  class{'profile_jitsi::nginx:'
+  class{'profile_jitsi::nginx':
     jitsi_vhost_server_name => $jitsi_vhost_server_name,
   }
 
